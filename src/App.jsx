@@ -1,4 +1,3 @@
-import "./App.css";
 import Header from "./components/Header";
 import Tasks from "./components/Tasks";
 import AddTask from "./components/AddTask";
@@ -36,12 +35,7 @@ function App() {
 	// Delete Task
 	const deleteTask = async (id) => {
 		await fetch(`http://localhost:5000/tasks/${id}`, { method: "DELETE" });
-
-		setTasks(
-			tasks.filter((task) => {
-				return task.id !== id;
-			})
-		);
+		setTasks(tasks.filter((task) => task.id !== id));
 	};
 
 	//Toggle Reminder
@@ -91,16 +85,20 @@ function App() {
 					exact
 					render={(props) => (
 						<>
-							{showAddTask && <AddTask onAdd={addTask} />}
-							{tasks.length > 0 ? (
-								<Tasks
-									tasks={tasks}
-									onDelete={deleteTask}
-									onToggle={toggleReminder}
-								/>
-							) : (
-								"No Tasks To Show"
-							)}
+							<div className={`addTasks-box-${showAddTask}`}>
+								<AddTask onAdd={addTask} />
+							</div>
+							<div className="tasks-box">
+								{tasks.length > 0 ? (
+									<Tasks
+										tasks={tasks}
+										onDelete={deleteTask}
+										onToggle={toggleReminder}
+									/>
+								) : (
+									"No Tasks To Show"
+								)}
+							</div>
 						</>
 					)}
 				/>
