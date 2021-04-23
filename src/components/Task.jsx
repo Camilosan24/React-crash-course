@@ -8,10 +8,10 @@ const Task = ({ task, onDelete, onToggle }) => {
 		const showComponent = () => {
 			setTimeout(() => {
 				setShow(true);
-			}, 0);
+			}, 1);
 		};
 
-		showComponent();
+		return showComponent();
 	}, []);
 
 	return (

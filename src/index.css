@@ -93,6 +93,7 @@ body::-webkit-scrollbar{
 	margin: 5px;
 	padding: 10px 20px;
 	cursor: pointer;
+	transition: .5s;
 }
 
 .show-task{
